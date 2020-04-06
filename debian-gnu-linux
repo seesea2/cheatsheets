@@ -1,0 +1,112 @@
+Debian Gnu/Linus
+
+# tasksel install standard
+build-essential
+
+     # apt-get build-dep foo
+     # apt-get source --build foo
+
+kernel-package
+/etc/debian_version
+dpkg -l
+dpkg --status foo
+dpkg --list foo
+apt-get source foo
+apt-get build-dep foo
+dch -l local 'Blah blah blah'
+debuild -us -uc
+sudo dpkg -i ../*.deb
+
+dpkg-source -x foo_version-revision.dsc
+dpkg-buildpackage -rfakeroot -b
+dpkg -i ../foo_version-revision_arch.deb
+
+dpkg --info foo_VVV-RRR.deb
+dpkg --install foo_VVV-RRR.deb.
+dpkg --unpack foo_VVV-RRR.deb
+dpkg --configure foo
+dpkg --fsys-tarfile foo_VVV-RRR.deb | tar -xf – blurf*
+dpkg --remove foo.
+dpkg --purge foo
+dpkg --list 'foo*'.
+
+apt-get update
+apt-get upgrade
+apt-get install foo
+apt-get remove foo
+apt-get --purge remove foo
+apt-get dist-upgrade
+apt-cache search word
+apt-cache show package
+apt-cache depends package
+apt-cache showpkg package
+aptitude install foo.
+
+dpkg-split --split foo.de
+dpkg-split --join "foo*"
+
+dpkg --list
+dpkg --list 'foo*'
+dpkg --status packagename
+dpkg --listfiles foo
+dpkg --search filename
+dlocate -S  filename
+
+zgrep foo Contents-ARCH.gz
+apt-file search foo
+
+aptitude update
+aptitude dist-upgrade
+
+kernel-package
+make-kpkg --initrd kernel_image
+make-kpkg --help
+
+dpkg --purge linux-image-NNN
+
+dpkg-scanpackages BIN_DIR OVERRIDE_FILE [PATHPREFIX] > my_Packages
+dpkg --merge-avail my_Packages
+
+/etc/motd.tail
+uname
+# chvt 1
+
+
+
+key
+description of key binding
+Ctrl-U
+erase line before cursor
+Ctrl-H
+erase a character before cursor
+Ctrl-D
+terminate input (exit shell if you are using shell)
+Ctrl-C
+terminate a running program
+Ctrl-Z
+temporarily stop program by moving it to the background job
+Ctrl-S
+halt output to screen
+Ctrl-Q
+reactivate output to screen
+Ctrl-Alt-Del
+reboot/halt the system, see inittab(5)
+Left-Alt-key (optionally, Windows-key)
+meta-key for Emacs and the similar UI
+Up-arrow
+start command history search under bash
+Ctrl-R
+start incremental command history search under bash
+Tab
+complete input of the filename to the command line under bash
+Ctrl-V Tab
+input Tab without expansion to the command line under bash
+
+$ sudo update-alternatives --config editor
+
+sh /media/cdrom/VBoxLinuxAdditions.run
+
+
+ 
+
+
