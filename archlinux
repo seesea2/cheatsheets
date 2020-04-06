@@ -1,0 +1,43 @@
+OS install
+fdisk -l
+
+mkdir /mnt
+mount /dev/sda1 /mnt
+mkdir /mnt/home
+mount /dev/sda2 /mnt/home
+
+nano /etc/pacman.d/mirrorlist    
+pacstrap -i /mnt base
+genfstab -U -p /mnt >> /mnt/etc/fstab
+nano /mnt/etc/fstab
+
+arch-chroot /mnt
+nano /etc/locale.gen
+echo LANG=en_US.UTF-8 > /etc/locale.conf
+export LANG=en_US.UTF-8
+
+ls /usr/share/zoneinfo
+ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+hwclock --systohc --utc
+
+systemctl enable dhcpcd@eth0.service
+nano /etc/pacman.conf
+pacman -Sy
+passwd
+useradd -m -g users -G wheel,storage,power -s /bin/bash johndoe
+passwd johndoe
+
+pacman -S grub-bios
+grub-install --target=i386-pc --recheck /dev/sda
+pacman -S os-prober
+grub-mkconfig -o /boot/grub/grub.cfg
+exit
+umount /mnt
+reboot
+    
+sudo pacman -S alsa-utils
+pacman -S xorg-server xorg-xinit xorg-server-utils
+sudo pacman -S nvidia lib32-nvidia-utils
+pacman -S xf86-input-synaptics
+pacman -S xorg-twm xorg-xclock xterm
+
